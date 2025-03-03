@@ -13,7 +13,7 @@ export class CustomerService {
     private http: HttpClient
   ) { }
 
-  private baseUrl = 'http://localhost:8080/category';
+  private baseUrl = 'http://localhost:8080/customer';
 
   getCustomers(): Observable<Customer[]> {
     //return of(CATEGORY_DATA);
