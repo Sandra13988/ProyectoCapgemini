@@ -41,7 +41,7 @@ public class CustomerServiceImpl implements CustomerService {
      * {@inheritDoc}
      */
     @Override
-    public void save(Long id, CustomerDto dto) {
+    public void save(Long id, CustomerDto dto) throws Exception {
 
         Customer customer;
 
@@ -49,6 +49,12 @@ public class CustomerServiceImpl implements CustomerService {
             customer = new Customer();
         } else {
             customer = this.get(id);
+        }
+
+        // Verificar si ya existe un cliente con el mismo nombre
+        Customer existingCustomer = customerRepository.findByName(dto.getName());
+        if (existingCustomer != null && (id == null || !existingCustomer.getId().equals(id))) {
+            throw new Exception("El cliente con el nombre " + dto.getName() + " ya existe.");
         }
 
         customer.setName(dto.getName());

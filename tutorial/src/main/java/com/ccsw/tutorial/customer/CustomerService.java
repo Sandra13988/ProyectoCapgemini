@@ -32,7 +32,7 @@ public interface CustomerService {
      * @param id PK de la entidad
      * @param dto datos de la entidad
      */
-    void save(Long id, CustomerDto dto);
+    void save(Long id, CustomerDto dto) throws Exception;
 
     /**
      * Método para borrar una {@link Customer}
