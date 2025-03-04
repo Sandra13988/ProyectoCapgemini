@@ -5,6 +5,8 @@ import com.ccsw.tutorial.author.model.AuthorDto;
 import com.ccsw.tutorial.author.model.AuthorSearchDto;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
+
 /**
  * @author ccsw
  *
@@ -25,7 +27,9 @@ public interface AuthorService {
      * @param dto dto de búsqueda
      * @return {@link Page} de {@link Author}
      */
-    Page<Author> findPage(AuthorSearchDto dto);
+    Page<Author> findPage(AuthorSearchDto dto); /*paginado*/
+
+    List<Author> findAll(); /*sin paginar*/
 
     /**
      * Método para crear o actualizar un {@link Author}

@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -28,6 +29,20 @@ public class AuthorController {
 
     @Autowired
     ModelMapper mapper;
+
+    /**
+     * Método para recuperar todas las {@link Author}
+     *
+     * @return {@link List} de {@link AuthorDto}
+     */
+    @Operation(summary = "Find", description = "Method that return a list of Categories")
+    @RequestMapping(path = "", method = RequestMethod.GET)
+    public List<AuthorDto> findAll() {
+
+        List<Author> categories = this.authorService.findAll();
+
+        return categories.stream().map(e -> mapper.map(e, AuthorDto.class)).collect(Collectors.toList());
+    }
 
     /**
      * Método para recuperar un listado paginado de {@link Author}
