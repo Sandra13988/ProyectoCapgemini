@@ -29,9 +29,14 @@ export class CustomerEditComponent {
   }
 
   onSave() {
-    this.customerService.saveCustomer(this.customer).subscribe(() => {
-        this.dialogRef.close();
-    });
+    this.customerService.saveCustomer(this.customer).subscribe(
+      () => {
+        this.dialogRef.close(); // Cierra el diálogo si el cliente se guarda correctamente
+      },
+      (error) => {
+        alert(error); // Muestra el mensaje de error recibido del backend
+      }
+    );
 }
 
   onClose() {
