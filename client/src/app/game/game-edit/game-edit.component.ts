@@ -49,17 +49,15 @@ export class GameEditComponent implements OnInit {
         });
 
         this.authorService.getAllAuthors().subscribe((authors) => {
-            this.authors = authors;
+            
+            this.authors = authors; // Guarda TODOS los autores en la lista del dropdown
 
-            if (this.game.author != null) {
-                const authorFilter: Author[] = authors.filter(
-                    (author) => author.id == this.data.game.author.id
-                );
-                if (authorFilter != null) {
-                    this.game.author = authorFilter[0];
-                }
-            }
-        });
+    if (this.game.author) { 
+        // Si el juego ya tiene un autor asignado, lo busca en la lista
+        this.game.author = authors.find(auth => auth.id === this.data.game.author?.id) || null;
+    }
+        });          
+        
     }
 
     onSave() {

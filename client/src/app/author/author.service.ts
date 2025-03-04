@@ -11,7 +11,7 @@ import { AUTHOR_DATA_LIST } from './model/mock-author-list'; //Esto era para usa
     providedIn: 'root',
 })
 export class AuthorService {
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
     private baseUrl = 'http://localhost:8080/author';
 
@@ -29,9 +29,9 @@ export class AuthorService {
         return this.http.delete<void>(`${this.baseUrl}/${idAuthor}`);
     }
 
-    
+
 
     getAllAuthors(): Observable<Author[]> {
-      return this.http.get<Author[]>(this.baseUrl);
-  }
+        return this.http.get<Author[]>(this.baseUrl);
+    }
 }
