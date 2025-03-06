@@ -33,7 +33,7 @@ export class CustomerListComponent implements OnInit{
   //si este contiene datos los imprime en la tabla
   ngOnInit(): void { 
     this.customerService.getCustomers().subscribe(
-      categories => this.dataSource.data = categories
+      costumer => this.dataSource.data = costumer
     );
   }
 

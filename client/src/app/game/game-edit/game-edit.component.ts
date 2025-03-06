@@ -15,7 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 @Component({
     selector: 'app-game-edit',
     standalone: true,
-    imports: [FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule ],
+    imports: [FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule],
     templateUrl: './game-edit.component.html',
     styleUrl: './game-edit.component.scss',
 })
@@ -30,7 +30,7 @@ export class GameEditComponent implements OnInit {
         private gameService: GameService,
         private categoryService: CategoryService,
         private authorService: AuthorService
-    ) {}
+    ) { }
 
     ngOnInit(): void {
         this.game = this.data.game ? Object.assign({}, this.data.game) : new Game();
@@ -49,15 +49,15 @@ export class GameEditComponent implements OnInit {
         });
 
         this.authorService.getAllAuthors().subscribe((authors) => {
-            
+
             this.authors = authors; // Guarda TODOS los autores en la lista del dropdown
 
-    if (this.game.author) { 
-        // Si el juego ya tiene un autor asignado, lo busca en la lista
-        this.game.author = authors.find(auth => auth.id === this.data.game.author?.id) || null;
-    }
-        });          
-        
+            if (this.game.author) {
+                // Si el juego ya tiene un autor asignado, lo busca en la lista
+                this.game.author = authors.find(auth => auth.id === this.data.game.author?.id) || null;
+            }
+        });
+
     }
 
     onSave() {
